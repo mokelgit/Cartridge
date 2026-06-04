@@ -1,14 +1,23 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Cartridge.Models;
+using Cartridge.Data;
 
 namespace Cartridge.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly GameRepository _gameRepository;
+
+    public HomeController(GameRepository gameRepository)
     {
-        return View();
+        _gameRepository = gameRepository;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var randomGames = await _gameRepository.GetRandomGames();
+        return View(randomGames);
     }
 
     public IActionResult Privacy()

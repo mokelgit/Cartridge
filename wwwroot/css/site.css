@@ -1,9 +1,57 @@
+:root {
+    --bs-body-bg: #131c1b;
+    --bs-body-color: #e2e8e7;
+    --bs-dark: #161f1e;
+    --bs-default: #0f1918;
+    --bs-primary: #4ecdc4;
+    --bs-primary-rgb: 78, 205, 196;
+    --bs-secondary: #7a9190;
+    --bs-success: #6dbf67;
+    --bs-success-rgb: 109, 191, 103;
+    /* hover states — slightly lighter than their base */
+    --bs-hover-default: #162120;
+    --bs-hover-dark: #1c2827;
+    --bs-hover-primary: #3ab8af;
+    --bs-hover-surface: #1e2b2a;
+}
+
+.bg-default {
+    background-color: var(--bs-default) !important;
+}
+
+.bg-dark {
+    background-color: var(--bs-dark) !important;
+}
+
+.bg-surface {
+    background-color: var(--bs-dark) !important;
+}
+
+body {
+    background-color: var(--bs-body-bg) !important;
+}
+
+/* hover utility classes */
+.hover-default:hover {
+    background-color: var(--bs-hover-default) !important;
+}
+
+.hover-dark:hover {
+    background-color: var(--bs-hover-dark) !important;
+}
+
+.hover-surface:hover {
+    background-color: var(--bs-hover-surface) !important;
+}
+
+
+
+
 html {
     font-size: 14px;
-    background-color: #091413;
+    background-color: var(--bs-body-bg);
     font-family: "Saira", sans-serif;
     color: white;
-   
 }
 
 
@@ -35,30 +83,35 @@ html {
 body {
     margin-bottom: 60px;
     margin-top: 15px;
-    background-color: #091413;
+    background-color: #090F14;
     font-family: "Saira", sans-serif; /* add this */
+    color: white;
+    
+}
+
+.logo-header {
+    font-family: "Rubik Iso", system-ui;
+    font-size: 42px;
+    font-weight: 600;
     color: white;
 }
 
-
-.text-header{
+.text-header {
     font-size: 42px;
     font-weight: 600;
-    line-height: 48px;
-  
-
+    color: white;
 }
 
 .text-subheader{
     font-size: 28px;
     font-weight: 600;
-    line-height: 32px;
+    color: white;
 }
 
 .text-std{
     font-size: 16px;
     font-weight: 500;
-    line-height: 24px;
+    color: white;
 }
 
 .site-header {

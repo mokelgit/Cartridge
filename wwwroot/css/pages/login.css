@@ -1,0 +1,9 @@
+﻿.login-input {
+    background-color: var(--bs-default);
+    border: 1px solid var(--bs-hover-surface);
+    width: 300px;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 15px 5px;
+    outline: none;
+}

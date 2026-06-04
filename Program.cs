@@ -1,19 +1,38 @@
 using Cartridge.Data;
+using Cartridge.Services;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 var connectionString = builder.Configuration
     .GetConnectionString("DefaultConnection");
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString,
-        ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<GameRepository>();
+builder.Services.AddScoped<IDbConnection>(sp =>
+    new MySqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication("CookieAuth")
+    .AddCookie("CookieAuth", options =>
+    {
+        options.LoginPath = "/auth/login";
+        options.LogoutPath = "/auth/logout";
+        options.ExpireTimeSpan = TimeSpan.FromDays(7);
+        options.SlidingExpiration = true;
+    });
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddAuthorization();
+
 
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

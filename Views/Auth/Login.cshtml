@@ -1,0 +1,31 @@
+﻿@model Cartridge.Models.LoginViewModel
+
+@{
+}
+
+<div class="w-100 d-flex flex-column align-items-center justify-content-center row-gap-3 text-std my-auto" style="padding-top: 200px;">
+    <form method="post" asp-controller="Auth" asp-action="Login">
+        @Html.AntiForgeryToken()
+
+        <div class="d-flex flex-column row-gap-2">
+
+            <span asp-validation-summary="All" class="text-danger"></span>
+
+            <input asp-for="Username"
+                   placeholder="Username"
+                   class="login-input" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+
+            <input asp-for="Password"
+                   placeholder="Password"
+                   type="password"
+                   class="login-input" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+            <button type="submit" class="btn btn-primary bg-default" style="border-color: var(--bs-hover-surface)">Login</button>
+
+            <span>No account? Register <a href="/auth/register">here</a></span>
+
+        </div>
+    </form>
+</div>

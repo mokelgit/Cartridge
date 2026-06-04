@@ -13,18 +13,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/pages/home.css" />
+    <link rel="stylesheet" href="~/css/pages/login.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="site-header text-header d-flex justify-content-between w-100">
-            <div class="d-flex align-items-center column-gap-3">
-                <div>Cartridge</div>
-                <partial name="_Logo" />
-            </div>
-            <div>
-                Search bar here
-            </div>
+    <div class="container " style="padding-top: 15px;">
+        <div class="site-header text-header d-flex justify-content-between w-100 ">
+            <a href="/" class="d-flex align-items-center column-gap-3 logo-header">
+                <img src="~/images/cartridge.png" alt="Cartridge logo" style="image-rendering: pixelated;" width="64" height="64" />
+                <div class="text-decoration-none">Cartridge</div>
+            </a>
+            <partial name="_TopBar" />
         </div>
     </div>
     <div class="container">
