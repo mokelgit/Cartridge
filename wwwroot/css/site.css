@@ -1,140 +1,153 @@
+/* ── Design Tokens ───────────────────────────────────── */
 :root {
-    --bs-body-bg: #131c1b;
-    --bs-body-color: #e2e8e7;
-    --bs-dark: #161f1e;
-    --bs-default: #0f1918;
-    --bs-primary: #4ecdc4;
-    --bs-primary-rgb: 78, 205, 196;
-    --bs-secondary: #7a9190;
-    --bs-success: #6dbf67;
-    --bs-success-rgb: 109, 191, 103;
-    /* hover states — slightly lighter than their base */
-    --bs-hover-default: #162120;
-    --bs-hover-dark: #1c2827;
-    --bs-hover-primary: #3ab8af;
-    --bs-hover-surface: #1e2b2a;
+    --color-bg: #0f0e0c;
+    --color-bg-surface: #141310;
+    --color-bg-raised: #1a1915;
+    --color-border: #2a2720;
+    --color-border-hover: #f5c842;
+    --color-text-primary: #e8dcc8;
+    --color-text-secondary: #8a7f6e;
+    --color-text-muted: #4a4538;
+    --color-text-game: #c8bfad;
+    --color-accent: #f5c842;
+    --color-accent-dim: rgba(245, 200, 66, 0.07);
+    --font-pixel: 'Press Start 2P', monospace;
+    --font-body: 'Syne', sans-serif;
+    --font-mono: 'DM Mono', monospace;
 }
 
-.bg-default {
-    background-color: var(--bs-default) !important;
-}
-
-.bg-dark {
-    background-color: var(--bs-dark) !important;
-}
-
-.bg-surface {
-    background-color: var(--bs-dark) !important;
-}
-
+/* ── Bootstrap Overrides ─────────────────────────────── */
 body {
-    background-color: var(--bs-body-bg) !important;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
 }
 
-/* hover utility classes */
-.hover-default:hover {
-    background-color: var(--bs-hover-default) !important;
-}
-
-.hover-dark:hover {
-    background-color: var(--bs-hover-dark) !important;
-}
-
-.hover-surface:hover {
-    background-color: var(--bs-hover-surface) !important;
-}
-
-
-
-
-html {
+.text-std {
+    line-height: 16px;
     font-size: 14px;
-    background-color: var(--bs-body-bg);
-    font-family: "Saira", sans-serif;
-    color: white;
-}
-
-
-/*.saira-<uniquifier > {
-    font-family: "Saira", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-}
-*/
-
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-    margin-bottom: 60px;
-    margin-top: 15px;
-    background-color: #090F14;
-    font-family: "Saira", sans-serif; /* add this */
-    color: white;
-    
-}
-
-.logo-header {
-    font-family: "Rubik Iso", system-ui;
-    font-size: 42px;
-    font-weight: 600;
-    color: white;
 }
 
 .text-header {
-    font-size: 42px;
-    font-weight: 600;
-    color: white;
+    font-size: 18px;
 }
 
-.text-subheader{
-    font-size: 28px;
-    font-weight: 600;
-    color: white;
-}
-
-.text-std{
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
-}
-
-.site-header {
-
-    width: 100%;
-    height: 50px;
+/*nav items*/
+.nav-search {
     display: flex;
     align-items: center;
+    gap: 8px;
+    background: #1a1915;
+    border: 1px solid #2a2720;
+    border-radius: 4px;
+    padding: 6px 12px;
 }
 
-.logo-green {
-    color: #7ED321;
-}
-.logo-blue {
-    color: #2F95F5;
-}
-
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.nav-search input {
+    background: none;
+    border: none;
+    outline: none;
+    color: #8a7f6e;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    width: 140px;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.nav-search input::placeholder {
+    color: #4a4538;
 }
 
+.nav-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background: #2a2720;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #f5c842;
+    cursor: pointer;
+}
+
+
+/* Override Bootstrap's primary color to your accent yellow */
+.btn-primary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+    font-family: var(--font-pixel);
+    font-size: 8px;
+}
+
+.btn-outline-primary {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+.card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.navbar {
+    background-color: var(--color-bg) !important;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Utility Classes ─────────────────────────────────── */
+.font-pixel {
+    font-family: var(--font-pixel);
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.font-body {
+    font-family: var(--font-body);
+}
+
+.text-accent {
+    color: var(--color-accent);
+}
+
+.text-primarycstm{
+    color: var(--color-text-primary)
+}
+
+.text-secondarycstm {
+    color: var(--color-text-secondary)
+}
+
+
+.text-muted-crt {
+    color: var(--color-text-muted);
+}
+
+.text-secondary-crt {
+    color: var(--color-text-secondary);
+}
+
+.bg-surface {
+    background-color: var(--color-bg-surface);
+}
+
+.bg-raised {
+    background-color: var(--color-bg-raised);
+}
+
+.border-crt {
+    border: 1px solid var(--color-border);
+}
+
+.border-crt-accent {
+    border: 1px solid var(--color-accent);
+}

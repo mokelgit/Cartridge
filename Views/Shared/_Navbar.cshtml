@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Html;
+@{
+    bool isLoggedIn = User.Identity.IsAuthenticated;
+}
+
+
+<body>
+    <head>
+        <link rel="stylesheet" href="~/css/pages/navbar.css" />
+    </head>
+    <div class="d-flex column-gap-3 align-items-center text-primarycstm font-body justify-content-between">
+        <div class="text-std">
+            @if (isLoggedIn)
+            {
+                <a href="/account" class="text-primarycstm text-decoration-none text-std column-text">@(User.Identity.Name)</a>
+            }
+            else
+            {
+                <a href="/auth/login" class="text-primarycstm text-decoration-none text-std column-text">Login</a>
+            }
+
+        </div>
+        <div class="text-std column-text">
+            Games
+        </div>
+        <div class="text-std column-text">
+            Reviews
+        </div>
+        <div class="text-std column-text">
+            Lists
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+        
+            <div class="nav-search">
+                <i class="ti ti-search" style="font-size:14px;color:#4a4538" aria-hidden="true"></i>
+                <input type="text" placeholder="Search games..." />
+            </div>
+            <div class="nav-avatar">MK</div>
+        </div>
+   
+    </div>
+</body>

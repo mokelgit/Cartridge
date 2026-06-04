@@ -16,20 +16,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/pages/home.css" />
     <link rel="stylesheet" href="~/css/pages/login.css" />
 </head>
 <body>
     <div class="container " style="padding-top: 15px;">
-        <div class="site-header text-header d-flex justify-content-between w-100 ">
-            <a href="/" class="d-flex align-items-center column-gap-3 logo-header">
-                <img src="~/images/cartridge.png" alt="Cartridge logo" style="image-rendering: pixelated;" width="64" height="64" />
-                <div class="text-decoration-none">Cartridge</div>
+        <div class="site-header text-header d-flex text-primarycstm align-content-center justify-content-between w-100  ">
+            <a href="/" class="d-flex align-items-center column-gap-3 logo-header text-decoration-none">
+                <img src="~/images/cartridge.png" alt="Cartridge logo" style="image-rendering: pixelated;" width="48" height="48" />
+                <div class="font-pixel text-accent">Cartridge</div>
             </a>
-            <partial name="_TopBar" />
+            <partial name="_Navbar" />
         </div>
     </div>
-    <div class="container">
+    <div class="container font-body">
         <main role="main" class="pb-3" style="padding-top: 60px;">
             @RenderBody()
         </main>

@@ -8,16 +8,18 @@
 
 
 <div class="d-flex flex-column row-gap-4">
-    <div class="text-subheader">Currently Trending</div>
-    <div class="d-flex column-gap-3">
+    <div class=" text-accent font-pixel text-header">// Currently Trending</div>
+    <div class="game-grid column-gap-3 justify-content-between w-100  overflow-none">
     @foreach(var game in Model)
     {
-        <div class="d-flex flex-column row-gap-1">
-            <img src="@game.CoverImageURL" alt="@game.Name" class="gamecard" />
-            <div class="text-std">
+        <a href="/games/@game.ID" class="d-flex flex-column row-gap-1 text-decoration-none">
+            <div class="gamecard-wrapper">
+                <img src="@game.CoverImageURL" alt="@game.Name" class="gamecard" />
+            </div>
+            <div class="align-self-center game-title">
                 @game.Name
             </div>
-        </div>
+        </a>
 
     }
     </div>
