@@ -19,14 +19,17 @@ namespace Cartridge.Controllers
             var games = await _gameRepository.GetAllGames();
             return View(games);
         }
-
         // GET /Games/Details/5
+        [HttpGet("/games/{id}")]
         public async Task<IActionResult> Details(int id)
         {
             var game = await _gameRepository.GetGameByID(id);
             if (game == null) return NotFound();
             return View(game);
         }
+
+
+      
 
 
     }

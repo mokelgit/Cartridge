@@ -1,0 +1,62 @@
+﻿@model Cartridge.Models.GameViewModel
+@{
+    const int RATING = 5;
+    string releaseYear = Model.ReleaseDate?.Year.ToString() ?? "Unknown";
+}
+
+
+<div class="d-flex flex-column row-gap-3">
+  <div class="banner-wrapper">
+    <img src="@Model.BackgroundImageURL" class="banner" />
+    <div class="header">
+        <span>@Model.Name</span>
+        <span>@releaseYear</span>
+    </div>
+  </div>
+  <div class="d-flex align-items-center column-gap-3">
+      <div class="interaction-box">
+            <div class="box-button" style="border-top: 0px">
+                <div class="d-flex flex-column row-gap-2">
+                    <div>Rating</div>
+                    <div class="d-flex px-4 w-100 justify-content-between column-gap-2">
+                        @for(int i = 0; i < 5; i++)
+                        {
+                            <div class="rounded-5"
+                                style="width: 12px; height: 12px; background-color: red;"></div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="box-button" style="">
+                Review
+            </div>
+            <div class="box-button" style="border-bottom: 0px">
+                Share
+            </div>
+      </div>
+      <div class="text-std" style="font-size:18px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Vestibulum tincidunt sem non libero lobortis pharetra. Praesent interdum ligula id sagittis consectetur. Sed scelerisque orci non justo rutrum, at porta nibh accumsan. Nunc nec egestas leo. Vivamus nec erat id velit posuere suscipit. Nulla suscipit risus sed purus dictum lobortis. Duis a lacinia dui, in mollis dui. Suspendisse pharetra tortor efficitur quam malesuada varius. Nunc odio nisl, convallis cursus cursus ac, 
+            scelerisque quis urna. Mauris congue velit eget pharetra cursus.
+      </div>
+      <div class="info-box">
+            <div class="d-flex flex-column">
+                <div>Developed By:</div>
+                <div>@Model.Developer</div>
+            </div>
+            <div class="d-flex flex-column">
+                <div>Published By:</div>
+                <div>@Model.Publisher</div>
+            </div>
+            <div class="d-flex flex-column">
+                <div>Available On:</div>
+                <div></div>
+            </div>
+
+      </div>
+  </div>
+
+
+
+</div>
