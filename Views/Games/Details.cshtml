@@ -1,7 +1,9 @@
 ﻿@model Cartridge.Models.GameViewModel
+
 @{
     const int RATING = 5;
-    string releaseYear = Model.ReleaseDate?.Year.ToString() ?? "Unknown";
+    string releaseYear = Model.ReleaseDate?.Year.ToString() ?? "";
+    
 }
 
 
@@ -43,11 +45,19 @@
       <div class="info-box">
             <div class="d-flex flex-column">
                 <div>Developed By:</div>
-                <div>@Model.Developer</div>
+                
+                @foreach(var developer in Model.Developer)
+                {
+                    <div>@developer.Name</div>
+                }
+            
             </div>
             <div class="d-flex flex-column">
                 <div>Published By:</div>
-                <div>@Model.Publisher</div>
+                @foreach (var publisher in Model.Publisher)
+                {
+                    <div>@publisher.Name</div>
+                }
             </div>
             <div class="d-flex flex-column">
                 <div>Available On:</div>

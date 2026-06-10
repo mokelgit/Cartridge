@@ -70,3 +70,20 @@
     z-index: 999;
 }
 
+
+
+.search-row {
+    padding: 15px 0 15px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    gap: 15px;
+
+}
+
+.search-row-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+
+}

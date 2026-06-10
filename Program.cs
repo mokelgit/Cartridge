@@ -1,4 +1,5 @@
 using Cartridge.Data;
+using Cartridge.Models;
 using Cartridge.Services;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
@@ -14,6 +15,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<GameRepository>();
+builder.Services.AddScoped<GameCompRepo>();
+builder.Services.AddScoped<CompanyRepository>();
+builder.Services.AddScoped<PlatformRepository>();
+builder.Services.AddScoped<GamePlatformRepo>();
 builder.Services.AddScoped<IDbConnection>(sp =>
     new MySqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllersWithViews();

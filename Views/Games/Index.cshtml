@@ -1,0 +1,22 @@
+﻿
+@model IEnumerable<Cartridge.Models.GameViewModel>
+@{
+}
+
+
+
+<div class="">
+    @foreach(var game in Model)
+    {
+        <div class="search-row">
+            <div class="search-row-image">
+                <img src="@game.CoverImageURL" alt="@game.Name" style="max-width: 100px;max-height:100px;" />
+            </div>
+            <div class="h-100 d-flex  flex-column justify-content-start">
+                <div class="text-std">@game.Name</div>
+            </div>
+        </div>
+    }
+
+
+</div>

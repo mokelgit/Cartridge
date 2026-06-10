@@ -1,4 +1,7 @@
-﻿namespace Cartridge.Models
+﻿using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using Cartridge.Models;
+
+namespace Cartridge.Models
 {
     public class GameViewModel
     {
@@ -8,7 +11,9 @@
         public string? BackgroundImageURL { get; set; }  // nullable since not all games have images
         public string? CoverImageURL { get; set; }
         public string? Slug { get; set; }
-        public string? Publisher { get; set; }
-        public string? Developer { get; set; }
+
+        public List<Companies> Publisher { get; set; } = new();
+
+        public List<Companies> Developer { get; set; } = new();
     }
 }
