@@ -8,14 +8,14 @@
 <div class="">
     @foreach(var game in Model)
     {
-        <div class="search-row">
+        <a href="/games/@game.ID" class="search-row text-decoration-none">
             <div class="search-row-image">
                 <img src="@game.CoverImageURL" alt="@game.Name" style="max-width: 100px;max-height:100px;" />
             </div>
             <div class="h-100 d-flex  flex-column justify-content-start">
-                <div class="text-std">@game.Name</div>
+                <div class="text-std" style="color:var(--color-text-primary)">@game.Name</div>
             </div>
-        </div>
+        </a>
     }
 
 
