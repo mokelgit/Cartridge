@@ -15,5 +15,7 @@ namespace Cartridge.Models
         public List<Companies> Publisher { get; set; } = new();
 
         public List<Companies> Developer { get; set; } = new();
+
+        public List<Reviews> Reviews { get; set; } = new();
     }
 }

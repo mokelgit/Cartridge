@@ -87,3 +87,38 @@
     border-radius: 4px;
 
 }
+
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    background: #1a1917;
+    border: 1px solid #f5c842;
+    padding: 2rem;
+    width: 500px;
+    max-width: 90%;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #f5c842;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

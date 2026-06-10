@@ -3,20 +3,19 @@ using Cartridge.Models;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
+using System.Security.Claims;
 
 namespace Cartridge.Controllers
 {
     public class GamesController : Controller
     {
         private readonly GameRepository _gameRepository;
-        private readonly GameCompRepo _gameCompRepo;
 
 
 
-        public GamesController(GameRepository gameRepository, GameCompRepo gameCompRepo)
+        public GamesController(GameRepository gameRepository)
         { 
             _gameRepository = gameRepository;
-            _gameCompRepo = gameCompRepo;
         }
 
 
@@ -38,14 +37,35 @@ namespace Cartridge.Controllers
         {
             var game = await _gameRepository.GetGameByID(id);
             if (game == null) return NotFound();
-
+            //Set data for publishers developers and reviews
             var publishers = await _gameRepository.GetPublishersByGameId(game.ID);
             var developer = await _gameRepository.GetDevelopersByGameId(game.ID);
+            var reviews = await _gameRepository.GetReviewsByGameID(game.ID);
 
             game.Publisher = publishers.ToList();
             game.Developer = developer.ToList();
+            game.Reviews = reviews.ToList();
             
             return View(game);
+        }
+
+
+        [HttpPost("/games/{id}")]
+        public async Task<IActionResult> InsertNewReview(int id, DateTime reviewTime, string userID, string? reviewBody, int rating)
+        {
+            
+            await _gameRepository.InsertReview(
+                new Reviews
+                {
+                    GameID = id,
+                    UserID = User.FindFirstValue("id"),
+                    Rating = rating,
+                    ReviewBody = reviewBody,
+                    ReviewDate = DateTime.UtcNow,
+                    Username = User.Identity.Name,
+                }
+            );
+            return Redirect($"/games/{id}");
         }
 
 

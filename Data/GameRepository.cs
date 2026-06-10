@@ -136,6 +136,30 @@ namespace Cartridge.Data
             return await connection.QueryAsync<GameViewModel>(sql, new { Search = $"%{search}%" });
         }
 
+        public async Task<IEnumerable<Reviews>> GetReviewsByGameID(int id)
+        {
+            return await _db.QueryAsync<Reviews>
+            (@"SELECT 
+                game_id AS GameID,
+                users_id AS UserID,
+                rating AS Rating,
+                review_body AS ReviewBody,
+                review_date AS ReviewDate,
+                username AS Username
+            FROM reviews
+            WHERE game_id = @id",
+             new { id });
+
+        }
+
+
+        public async Task InsertReview(Reviews review)
+        {
+            var sql = @"INSERT INTO reviews (game_id, users_id, rating, review_body, review_date, username)
+                                VALUES (@GameID, @UserID, @Rating, @ReviewBody, @ReviewDate, @Username)";
+
+            await _db.ExecuteAsync(sql, review);
+        }
 
 
 
