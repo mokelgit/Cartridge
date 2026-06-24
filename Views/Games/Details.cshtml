@@ -14,86 +14,136 @@
     </script>
 }
 
-<div class="d-flex flex-column row-gap-3">
-    <div class="modal-overlay" id="reviewModal">
-        <div class="modal-box">
-            <button class="modal-close" id="closeModal">&times;</button>
-            <h2>Write a Review</h2>
-            <form method="post" action="/games/@Model.ID">
-                <textarea name="reviewBody" placeholder="Write your review..."></textarea>
-                <input type="number" name="rating" min="0" max="10" placeholder="Rating (1-10)" />
-                <button type="submit" class="box-button">Submit</button>
-            </form>
+<div class="w-100" style="">
+    <div class="route">
+        <div class="route-text">Home</div>
+        <div class="" style="color:var(--color-text-secondary);font-size:9px;">></div>
+        <div class="route-text">Games</div>
+        <div class="" style="color:var(--color-text-secondary);font-size:9px;">></div>
+        <div class="route-text" style="font-size: 13px;">@Model.Name</div>
+    </div>
+    <div class="info-row">
+        <div class="info-left">
+            <div class="game-wrapper">
+                <img src="@Model.CoverImageURL" alt="@Model.Name" class="game-portrait"/>
+            </div>
+            <div class="d-flex flex-wrap justify-content-center row-gap-1 column-gap-1" style="max-width: 192px;padding-top:15px;">
+                @foreach(Platforms platform in Model.Platforms)
+                {
+                    <div class="platform-button">@(platform.ShortName ?? platform.PlatformName)</div>
+                }
+            </div>
         </div>
-    </div>
-  <div class="banner-wrapper">
-    <img src="@Model.BackgroundImageURL" class="banner" />
-    <div class="header">
-        <span>@Model.Name</span>
-        <span>@releaseYear</span>
-    </div>
-  </div>
-  <div class="d-flex align-items-center column-gap-3">
-      <div class="interaction-box">
-            <div class="box-button" style="border-top: 0px">
-                <div class="d-flex flex-column row-gap-2">
-                    <div>Rating</div>
-                    <div class="d-flex px-4 w-100 justify-content-between column-gap-2">
-                        @for(int i = 0; i < 5; i++)
-                        {
-                            <div class="rounded-5"
-                                style="width: 12px; height: 12px; background-color: red;"></div>
+        <div class="info-right" style="width: 100%;">
+            <div class="title-games">
+                @Model.Name 
+            </div>
+            <div class="d-flex flex-column">
+                <div class="d-flex align-items-center column-gap-2">
+                    <div class="subtitle-games">Developer</div>
+                    <div class="company-names">
+                        @{
+                            int indexD = 0;
+                            foreach (Companies developer in Model.Developer)
+                            {
+                                <span class="">@(developer.Name) </span>
+                                if (indexD + 1 < Model.Developer.Count())
+                                {
+                                    <span>·</span>
+                                }
+                                indexD++;
+                            }
                         }
-
                     </div>
                 </div>
+                <div class="d-flex align-items-center column-gap-2">
+                    <div class="subtitle-games">Publisher</div>
+                    <div class="company-names">
+                        @{
+                            int indexP = 0;
+                            foreach(Companies publisher in Model.Publisher)
+                            {
+                                <span class= "" >@(publisher.Name) </span>
+                                if(indexP + 1 < Model.Publisher.Count())
+                                {
+                                    <span>·</span>
+                                }
+                                indexP++;
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="d-flex align-items-center column-gap-2">
+                    <div class="subtitle-games">Released</div>
+                    <div class="company-names">@Model.ReleaseDate?.ToString("MMM dd yyyy")</div>
+                </div>
+                <div class="d-flex align-items-center column-gap-2">
+                    <div class="subtitle-games">Genres</div>
+                    <div class="company-names">Example</div>
+                </div>
             </div>
-            <div class="box-button" id="openModal">Review</div>
-            <div class="box-button" style="border-bottom: 0px">
-                Share
+            <div class="review-panel">
+                <div class="review-avg-text">@Model.ReviewMeta.AverageRating</div>
+                <div class="d-flex flex-column" style="min-width: 150px;" >
+                    <div style="color: var(--color-accent);">★★★★★</div>
+                    <div class="d-flex column-gap-1" style="color: var(--color-text-muted);font-size: 11px;"> 
+                        <div>@Model.Ratings.Count() Ratings </div>
+                        <span>·</span>
+                        <div>@Model.Reviews.Count() Reviews </div>
+                    </div>
+                </div>
+                <div class="review-bar-container">
+                    <div class="d-flex align-items-center column-gap-1 review-bar-text" style="width: 100%;">
+                        5★
+                        <div class="review-bar-background">
+                        </div>
+                        @Model.ReviewMeta.FiveStars
+                    </div>
+                    <div class="d-flex align-items-center column-gap-1 review-bar-text">
+                        4★
+                        <div class="review-bar-background">
+                        </div>
+                        @Model.ReviewMeta.FourStars
+                    </div>
+                    <div class="d-flex align-items-center column-gap-1 review-bar-text">
+                        3★
+                        <div class="review-bar-background">
+                        </div>
+                        @Model.ReviewMeta.ThreeStars
+                    </div>
+                    <div class="d-flex align-items-center column-gap-1 review-bar-text">
+                        2★
+                        <div class="review-bar-background">
+                        </div>
+                        @Model.ReviewMeta.TwoStars
+                    </div>
+                    <div class="d-flex align-items-center column-gap-1 review-bar-text">
+                        1★
+                        <div class="review-bar-background">
+                        </div>
+                        @Model.ReviewMeta.OneStars
+                    </div>
+
+                </div>
             </div>
-      </div>
-      <div class="text-std" style="font-size:18px;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Vestibulum tincidunt sem non libero lobortis pharetra. Praesent interdum ligula id sagittis consectetur. Sed scelerisque orci non justo rutrum, at porta nibh accumsan. Nunc nec egestas leo. Vivamus nec erat id velit posuere suscipit. Nulla suscipit risus sed purus dictum lobortis. Duis a lacinia dui, in mollis dui. Suspendisse pharetra tortor efficitur quam malesuada varius. Nunc odio nisl, convallis cursus cursus ac, 
-            scelerisque quis urna. Mauris congue velit eget pharetra cursus.
-      </div>
-      <div class="info-box">
-            <div class="d-flex flex-column">
-                <div>Developed By:</div>
+            <div class="d-flex align-items-center" style="padding-top: 5px; column-gap: 8px;">
+                <div class="gbutton-primary">
+                    <iconify-icon icon="mdi:plus"></iconify-icon>
+                    <div>Log</div>
+                </div>
+                <div class="gbutton-primary"> 
+                    <iconify-icon icon="mdi:star-outline"></iconify-icon>
+                    <div>Rate</div>
+                </div>
+                <div class="gbutton-primary">
+                    <iconify-icon icon="mdi:comment-add"></iconify-icon>
+                    <div>Write a review</div>
+                </div>
                 
-                @foreach(var developer in Model.Developer)
-                {
-                    <div>@developer.Name</div>
-                }
-            
-            </div>
-            <div class="d-flex flex-column">
-                <div>Published By:</div>
-                @foreach (var publisher in Model.Publisher)
-                {
-                    <div>@publisher.Name</div>
-                }
-            </div>
-            <div class="d-flex flex-column">
-                <div>Available On:</div>
-                <div></div>
             </div>
 
-      </div>
-  </div>
-  <div class="d-flex flex-column align-content-start">
-    @foreach(var review in Model.Reviews)
-    {
-         <div class="d-flex flex-column row-gap-2">
-             <div class="text-std">@review.Username</div>
-             <div class="text-std">@review.ReviewBody</div>
-                <div class="text-std">@{
-                        review.ReviewDate.ToString();
-                    }</div>
-            </div>   
-    }
-  </div>
-
+        </div>
+        
+    </div>
 
 </div>

@@ -19,14 +19,14 @@ namespace Cartridge.Controllers
         }
 
 
-        public async Task<IActionResult> Index(string? search)
+        public async Task<IActionResult> Index(string? search, int? page)
         {
             IEnumerable<GameViewModel> games;
 
             if (!string.IsNullOrWhiteSpace(search))
                 games = await _gameRepository.SearchGames(search);
             else
-                games = await _gameRepository.GetAllGames();
+                games = await _gameRepository.GetAllGames(page ?? 0);
 
             ViewData["search"] = search;
             return View(games);
@@ -40,11 +40,20 @@ namespace Cartridge.Controllers
             //Set data for publishers developers and reviews
             var publishers = await _gameRepository.GetPublishersByGameId(game.ID);
             var developer = await _gameRepository.GetDevelopersByGameId(game.ID);
-            var reviews = await _gameRepository.GetReviewsByGameID(game.ID);
+            var ratings = await _gameRepository.GetReviewsByGameID(game.ID);
+            var reviews = await _gameRepository.GetReviewsWithBodyByGameId(game.ID);
+            var platforms = await _gameRepository.GetPlatformsByGameId(game.ID);
+            var reviewMeta = await _gameRepository.GetReviewMetaByGameID(game.ID);
+            
 
             game.Publisher = publishers.ToList();
             game.Developer = developer.ToList();
+            game.Ratings = ratings.ToList();
+            game.Platforms = platforms.ToList();
             game.Reviews = reviews.ToList();
+            game.ReviewMeta = reviewMeta;
+            
+
             
             return View(game);
         }

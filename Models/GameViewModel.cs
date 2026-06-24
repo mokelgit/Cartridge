@@ -16,6 +16,14 @@ namespace Cartridge.Models
 
         public List<Companies> Developer { get; set; } = new();
 
+        public List<Reviews> Ratings { get; set; } = new();
+
         public List<Reviews> Reviews { get; set; } = new();
+
+        public List<Platforms> Platforms { get; set; } = new();
+
+        public GameReviewMeta ReviewMeta { get; set; } = new();
+
+       
     }
 }

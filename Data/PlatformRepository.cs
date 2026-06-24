@@ -19,9 +19,10 @@ namespace Cartridge.Data
             return await _db.QueryAsync<Platforms>
                 (@"SELECT
                 platform_id AS PlatformID,
-                platform AS Platform,
+                platform_name AS PlatformName,
                 slug AS Slug,
-                icon AS Icon
+                icon AS Icon,
+                short_name as ShortName
                 FROM platforms
                 ORDER BY platform ASC
                 ");
@@ -32,9 +33,10 @@ namespace Cartridge.Data
             return await _db.QuerySingleOrDefaultAsync<Platforms>
             (@"SELECT
                 platform_id AS PlatformID,
-                platform AS Platform,
+                platform_name AS PlatformName,
                 slug AS Slug,
-                icon AS Icon
+                icon AS Icon,
+                short_name as ShortName
                 FROM platforms
                 WHERE id = @id",
                 new { id }
@@ -47,9 +49,10 @@ namespace Cartridge.Data
             return await _db.QuerySingleOrDefaultAsync<Platforms>
             (@"SELECT
                 platform_id AS PlatformID,
-                platform AS Platform,
+                platform_name AS PlatformName,
                 slug AS Slug,
-                icon AS Icon
+                icon AS Icon,
+                short_name as ShortName
                 FROM platforms
                 WHERE platform = @platform",
                 new { platform }

@@ -8,7 +8,7 @@ namespace Cartridge.Controllers;
 public class HomeController : Controller
 {
     private readonly GameRepository _gameRepository;
-
+    private static readonly int[] TOPPICKS = { 987, 823, 3979, 7, 73, 340 };
     public HomeController(GameRepository gameRepository)
     {
         _gameRepository = gameRepository;
@@ -16,8 +16,8 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var randomGames = await _gameRepository.GetRandomGames();
-        return View(randomGames);
+        var topGames = await _gameRepository.GetGamesByIds(TOPPICKS);
+        return View(topGames);
     }
 
     public IActionResult Privacy()

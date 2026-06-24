@@ -8,7 +8,7 @@
     <head>
         <link rel="stylesheet" href="~/css/pages/navbar.css" />
     </head>
-    <div class="d-flex column-gap-3 align-items-center text-primarycstm font-body justify-content-between">
+    <div class="navbar-body text-primarycstm font-body">
         <div class="text-std">
             @if (isLoggedIn)
             {
@@ -20,18 +20,16 @@
             }
 
         </div>
-        <div class="text-std column-text">
+        <a class="text-std column-text text-primarycstm text-decoration-none" href="/games/">
             Games
-        </div>
-        <div class="text-std column-text">
-            Reviews
-        </div>
-        <div class="text-std column-text">
+        </a>
+        <a class="text-std column-text text-primarycstm text-decoration-none" href="/lists/">
             Lists
-        </div>
+        </a>
         <div style="display:flex;align-items:center;gap:12px">
             <form method="get" action="/games" class="nav-search">
                 <i class="ti ti-search" style="font-size:14px;color:#4a4538"></i>
+                <iconify-icon width="16px" height="16px" class="ti ti-search" style="color:#4a4538;" icon="mdi:search"></iconify-icon>
                 <input type="text" name="search" placeholder="Search games..." />
             </form>
             <div class="nav-avatar">MK</div>

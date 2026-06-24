@@ -5,18 +5,47 @@
     --color-bg-raised: #1a1915;
     --color-border: #2a2720;
     --color-border-hover: #f5c842;
-    --color-text-primary: #e8dcc8;
-    --color-text-secondary: #8a7f6e;
+    --color-text-primary: #f0ede8;
+    --color-text-secondary: #6b6560;
     --color-text-muted: #4a4538;
     --color-text-game: #c8bfad;
     --color-accent: #f5c842;
+    --color-accent-secondary: #ad8e2f;
     --color-accent-dim: rgba(245, 200, 66, 0.07);
     --font-pixel: 'Press Start 2P', monospace;
-    --font-body: 'Syne', sans-serif;
-    --font-mono: 'DM Mono', monospace;
+    --font-body: "Open Sans", sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+.banner-text {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text-primary)
+}
+
+body {
+    margin-bottom: 60px;
+    margin: 0 -10px 0 -10px;
+}
+
+
 /* ── Bootstrap Overrides ─────────────────────────────── */
+
+.disable-highlight {
+    -webkit-user-select: none; /* Safari, Chrome, and iOS */
+    -moz-user-select: none; /* Older Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard syntax (Modern browsers) */
+}
 body {
     background-color: var(--color-bg);
     color: var(--color-text-primary);
@@ -31,6 +60,49 @@ body {
 .text-header {
     font-size: 18px;
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+
+.muted-header {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    letter-spacing: 1px;
+  
+}
+
+
+.accent-button {
+    background-color: var(--color-accent);
+    border-radius: 5px;
+    color: var(--color-bg);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 10px 5px 10px;
+}
+    .accent-button:hover {
+        background-color: var(--color-accent-secondary);
+    }
+
+.standard-button {
+    background-color: var(--color-bg);
+    border-radius: 5px;
+    color: var(--color-text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #2a2720;
+}
+
+    .standard-button:hover {
+        background: var(--color-bg-raised);
+    }
 
 /*nav items*/
 .nav-search {
@@ -48,7 +120,7 @@ body {
     border: none;
     outline: none;
     color: #8a7f6e;
-    font-family: 'Syne', sans-serif;
+    font-family: sans-serif;
     font-size: 12px;
     width: 140px;
 }
@@ -122,6 +194,10 @@ body {
 .text-primarycstm{
     color: var(--color-text-primary)
 }
+
+    .text-primarycstm:hover{
+        color: var(--color-text-secondary)
+    }
 
 .text-secondarycstm {
     color: var(--color-text-secondary)

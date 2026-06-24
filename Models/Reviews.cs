@@ -5,7 +5,7 @@
 
         public int GameID { get; set; }
         public string UserID { get; set; }
-        public int Rating { get; set; }
+        public double Rating { get; set; }
         public string ReviewBody { get; set; }
         public DateTime ReviewDate { get; set; }
 
